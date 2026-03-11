@@ -1,0 +1,67 @@
+CREATE DATABASE AAKASH;
+USE AAKASH;
+-- delete complete table 
+drop table worker;
+CREATE TABLE WORKER(
+ EMPID INT PRIMARY KEY,
+ EMPNAME VARCHAR(255),
+ DATEJOIN DATE,
+ SALARY INT,
+ DEPT VARCHAR(255)
+);
+INSERT INTO WORKER (EMPID,EMPNAME,DATEJOIN,SALARY,DEPT)VALUES
+(1,'AAKASH','2025-09-18',100000,'SWE'),
+(2,'ANKIT','2025-09-09',50000,'HR'),
+(3,'ALOK','2025-07-09',90000,'ADMIN'),
+(4,'SNEHA','2025-05-19',45000,'HR'),
+(5,'GAURAV','2025-09-29',500000,'SWE');
+ 
+ CREATE TABLE STUDENT (
+    SID INT PRIMARY KEY,
+    SNAME VARCHAR(50),
+    COURSE VARCHAR(50),
+    AGE INT,
+    CITY VARCHAR(50)
+);
+
+INSERT INTO STUDENT (SID, SNAME, COURSE, AGE, CITY) VALUES
+(1,'ROHIT','BTECH',20,'DELHI'),
+(2,'SIMRAN','BCA',19,'MUMBAI'),
+(3,'AMAN','BSC',21,'PUNE'),
+(4,'KAVYA','BBA',20,'JAIPUR'),
+(5,'VIKAS','BTECH',22,'LUCKNOW');
+-- print the table
+SELECT * FROM STUDENT;
+SELECT * FROM WORKER;
+
+-- use of where
+SELECT * FROM STUDENT WHERE Age >20;
+select sname,city from student where age >19;
+
+-- use of between
+select * from student where age between 19 and 21;
+
+-- use of in
+select * from student where course ='btech' or course ='bca';
+select * from student where course in ('btech','bca');
+
+-- wildcard or pattern identification
+select * from student where sname like '_o%';
+select * from student where sname like '%a%';
+
+-- sorting 
+select * from worker order by salary;
+select * from worker order by salary desc;
+
+-- distinct values
+select distinct dept from worker; 
+
+-- data grouping 
+select dept,count(*) from worker group by dept;
+select dept,avg(salary) from worker group by dept;
+select dept,max(salary) from worker group by dept;
+select dept,min(salary) from worker group by dept;
+select dept,sum(salary) from worker group by dept;
+
+-- data grouping with having or specific conditions\
+select dept from worker group by dept having count(dept)>1;
